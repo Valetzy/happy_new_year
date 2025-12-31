@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Love ✨</title>
+
+        <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;900&display=swap');
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: radial-gradient(circle at bottom, #111 0%, #000 70%);
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 🌟 Stars */
+.star {
+    position: fixed;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite alternate;
+}
+@keyframes twinkle {
+    from { opacity: 0.3; }
+    to { opacity: 1; }
+}
+
+/* 💞 Heart rain */
+.heart {
+    position: fixed;
+    top: -10px;
+    font-size: 18px;
+    animation: fall linear infinite;
+    opacity: 0.8;
+}
+@keyframes fall {
+    to { transform: translateY(110vh); }
+}
+
+/* 🎆 Canvases */
+canvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}
+#bgFireworks { z-index: 1; }
+#frontFireworks { z-index: 5; }
+
+/* ✨ BIG 2026 */
+.year {
+    font-size: 6.5rem;
+    font-weight: 900;
+    letter-spacing: 8px;
+    text-shadow:
+        0 0 20px hotpink,
+        0 0 40px deeppink,
+        0 0 60px hotpink;
+    z-index: 3;
+    margin-bottom: 10px;
+}
+
+/* 💖 Layout */
+.container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 3;
+}
+
+/* 📸 Slideshow */
+.photo {
+    width: 160px;
+    height: 220px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 25px hotpink;
+}
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 💌 Card */
+.card {
+    max-width: 320px;
+    background: rgba(255,255,255,0.96);
+    padding: 25px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 0 40px hotpink;
+    color: #333;
+}
+.card h2 { color: #ff4f9a; }
+
+/* 💬 Typewriter */
+.typewriter {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    min-height: 150px;
+}
+
+/* 🎇 Button */
+button {
+    margin-top: 15px;
+    padding: 12px 25px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, hotpink, deeppink);
+    color: white;
+    font-size: 1rem;
+    box-shadow: 0 0 25px hotpink;
+    transition: transform 0.2s;
+}
+button:hover { transform: scale(1.1); }
+
+/* 📱 Mobile */
+@media (max-width: 768px) {
+    .container { flex-direction: column; }
+    .year { font-size: 4rem; }
+    .photo { width: 140px; height: 190px; }
+    .card { max-width: 90%; }
+}
+</style>
+    </head>
+
+    <body>
+
+        <!-- 🎵 Background Music -->
+        <audio autoplay loop>
+            <source src="music.mp3" type="audio/mpeg">
+        </audio>
+
+        <!-- 🌟 Stars -->
+        <script>
+for (let i = 0; i < 140; i++) {
+    const star = document.createElement("div");
+    star.className = "star";
+    const size = Math.random() * 2 + 1;
+    star.style.width = star.style.height = size + "px";
+    star.style.top = Math.random() * 100 + "vh";
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.animationDuration = Math.random() * 3 + 1 + "s";
+    document.body.appendChild(star);
+}
+</script>
+
+        <!-- 🎆 Fireworks Canvases -->
+        <canvas id="bgFireworks"></canvas>
+        <canvas id="frontFireworks"></canvas>
+
+        <!-- ✨ 2026 -->
+        <div class="year">2026</div>
+
+        <!-- 💖 Content -->
+        <div class="container">
+            <div class="photo">
+                <img id="slide1" src="pic (1).jpeg"
+                    style="opacity:1; transition: opacity 1s;">
+            </div>
+
+            <div class="card">
+                <h2>To the Girl I Love 💖</h2>
+                <div class="typewriter" id="type"></div>
+                <button onclick="hugeHeartFirework()">Send My Love 💘</button>
+            </div>
+
+            <div class="photo">
+                <img id="slide2" src="pic (1).jpg"
+                    style="opacity:1; transition: opacity 1s;">
+            </div>
+        </div>
+
+        <script>
+/* 💞 Falling hearts */
+setInterval(() => {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerText = "💖";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.animationDuration = Math.random() * 3 + 3 + "s";
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 6000);
+}, 250);
+
+/* 💬 Typewriter */
+const text = `Another year begins, and I still choose you.
+Through every smile, every challenge,
+every dream, I want it all with you.
+Thank you for being my love, my peace,
+and my forever.
+I love you ❤️`;
+
+let ti = 0;
+(function type() {
+    if (ti < text.length) {
+        document.getElementById("type").innerHTML += text.charAt(ti++);
+        setTimeout(type, 40);
+    }
+})();
+
+/* 📸 Slideshow */
+const images1 = ["pic (1).jpeg", "pic (2).jpeg", "pic (3).jpeg", "pic (4).jpeg", "pic (5).jpeg", "pic (6).jpeg", "pic (7).jpeg", "pic (8).jpeg"];
+let idx1 = 0;
+const slide1 = document.getElementById("slide1");
+
+setInterval(() => {
+    slide1.style.opacity = 0;
+    setTimeout(() => {
+        idx1 = (idx1 + 1) % images1.length;
+        slide1.src = images1[idx1];
+        slide1.style.opacity = 1;
+    }, 1000);
+}, 4000);
+
+const images2 = [
+  "pic (1).jpg", "pic (2).jpg", "pic (3).jpg", "pic (4).jpg", "pic (5).jpg",
+  "pic (6).jpg", "pic (7).jpg", "pic (8).jpg", "pic (9).jpg", "pic (10).jpg",
+  "pic (11).jpg", "pic (12).jpg", "pic (13).jpg", "pic (14).jpg", "pic (15).jpg",
+  "pic (16).jpg", "pic (17).jpg", "pic (18).jpg", "pic (19).jpg", "pic (20).jpg",
+  "pic (21).jpg", "pic (22).jpg", "pic (23).jpg", "pic (24).jpg", "pic (25).jpg",
+  "pic (26).jpg", "pic (27).jpg", "pic (28).jpg", "pic (29).jpg", "pic (30).jpg",
+  "pic (31).jpg", "pic (32).jpg", "pic (33).jpg", "pic (34).jpg", "pic (35).jpg",
+  "pic (36).jpg", "pic (37).jpg", "pic (38).jpg", "pic (39).jpg", "pic (40).jpg",
+  "pic (41).jpg", "pic (42).jpg", "pic (43).jpg", "pic (44).jpg", "pic (45).jpg",
+  "pic (46).jpg", "pic (47).jpg", "pic (48).jpg", "pic (49).jpg", "pic (50).jpg",
+  "pic (51).jpg", "pic (52).jpg", "pic (53).jpg", "pic (54).jpg", "pic (55).jpg",
+  "pic (56).jpg", "pic (57).jpg", "pic (58).jpg"
+];
+let idx2 = 0;
+const slide2 = document.getElementById("slide2");
+
+setInterval(() => {
+    slide2.style.opacity = 0;
+    setTimeout(() => {
+        idx2 = (idx2 + 1) % images2.length;
+        slide2.src = images2[idx2];
+        slide2.style.opacity = 1;
+    }, 1000);
+}, 4000);
+
+/* 🎆 Fireworks Engine */
+const bgCanvas = document.getElementById("bgFireworks");
+const bgCtx = bgCanvas.getContext("2d");
+const frontCanvas = document.getElementById("frontFireworks");
+const frontCtx = frontCanvas.getContext("2d");
+
+function resize() {
+    bgCanvas.width = frontCanvas.width = innerWidth;
+    bgCanvas.height = frontCanvas.height = innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
+
+let bgParticles = [];
+let heartParticles = [];
+const gravity = 0.03;
+
+function randomColor() {
+    return `hsl(${Math.random() * 360},100%,65%)`;
+}
+
+/* Background fireworks */
+setInterval(() => {
+    const x = Math.random() * bgCanvas.width;
+    const y = Math.random() * bgCanvas.height * 0.5;
+    const color = randomColor();
+    for (let i = 0; i < 50; i++) {
+        bgParticles.push({
+            x, y,
+            vx: (Math.random() - 0.5) * 6,
+            vy: (Math.random() - 0.5) * 6,
+            alpha: 1,
+            life: 80,
+            color
+        });
+    }
+}, 900);
+
+/* 💘 HUGE Heart Firework */
+function hugeHeartFirework() {
+    const x = frontCanvas.width / 2;
+    const y = frontCanvas.height / 2;
+    for (let t = 0; t < Math.PI * 2; t += 0.05) {
+        heartParticles.push({
+            x, y,
+            vx: 25 * Math.pow(Math.sin(t), 3),
+            vy: -(20 * Math.cos(t) - 8 * Math.cos(2*t) - 4 * Math.cos(3*t) - Math.cos(4*t)),
+            alpha: 1,
+            life: 120,
+            color: "hotpink"
+        });
+    }
+}
+
+/* Animate All */
+function animate() {
+    bgCtx.clearRect(0,0,bgCanvas.width,bgCanvas.height);
+    frontCtx.clearRect(0,0,frontCanvas.width,frontCanvas.height);
+
+    /* Background */
+    bgParticles.forEach((p,i) => {
+        p.vy += gravity;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life--;
+        p.alpha -= 0.01;
+
+        bgCtx.globalAlpha = p.alpha;
+        bgCtx.fillStyle = p.color;
+        bgCtx.beginPath();
+        bgCtx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+        bgCtx.fill();
+
+        if(p.life<=0||p.alpha<=0) bgParticles.splice(i,1);
+    });
+
+    /* Front Heart Firework */
+    heartParticles.forEach((p,i) => {
+        p.vy += gravity*0.3;
+        p.x += p.vx*0.04;
+        p.y += p.vy*0.04;
+        p.life--;
+        p.alpha -= 0.006;
+
+        frontCtx.globalAlpha = p.alpha;
+        frontCtx.fillStyle = p.color;
+        frontCtx.beginPath();
+        frontCtx.arc(p.x,p.y,3.2,0,Math.PI*2);
+        frontCtx.fill();
+
+        if(p.life<=0||p.alpha<=0) heartParticles.splice(i,1);
+    });
+
+    requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+    </body>
+</html>
