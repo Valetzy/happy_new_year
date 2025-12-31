@@ -6,133 +6,135 @@
         <title>My Love ✨</title>
 
         <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;900&display=swap');
 
-* { box-sizing: border-box; }
+    /* 📌 Global */
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        min-height: 100vh;
+        background: radial-gradient(circle at bottom, #111 0%, #000 70%);
+        font-family: 'Poppins', sans-serif;
+        overflow-x: hidden; /* prevent horizontal scroll */
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    background: radial-gradient(circle at bottom, #111 0%, #000 70%);
-    font-family: 'Poppins', sans-serif;
-    overflow: hidden;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
+    /* 🌟 Stars */
+    .star {
+        position: fixed;
+        background: white;
+        border-radius: 50%;
+        animation: twinkle 2s infinite alternate;
+    }
+    @keyframes twinkle { from { opacity: 0.3; } to { opacity: 1; } }
 
-/* 🌟 Stars */
-.star {
-    position: fixed;
-    background: white;
-    border-radius: 50%;
-    animation: twinkle 2s infinite alternate;
-}
-@keyframes twinkle {
-    from { opacity: 0.3; }
-    to { opacity: 1; }
-}
+    /* 💞 Heart rain */
+    .heart {
+        position: fixed;
+        top: -10px;
+        font-size: 18px;
+        animation: fall linear infinite;
+        opacity: 0.8;
+    }
+    @keyframes fall { to { transform: translateY(110vh); } }
 
-/* 💞 Heart rain */
-.heart {
-    position: fixed;
-    top: -10px;
-    font-size: 18px;
-    animation: fall linear infinite;
-    opacity: 0.8;
-}
-@keyframes fall {
-    to { transform: translateY(110vh); }
-}
+    /* 🎆 Canvases */
+    canvas { position: fixed; inset: 0; pointer-events: none; }
+    #bgFireworks { z-index: 1; }
+    #frontFireworks { z-index: 5; }
 
-/* 🎆 Canvases */
-canvas {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-}
-#bgFireworks { z-index: 1; }
-#frontFireworks { z-index: 5; }
+    /* ✨ Year */
+    .year {
+        font-size: 6.5rem;
+        font-weight: 900;
+        letter-spacing: 8px;
+        text-shadow: 0 0 20px hotpink, 0 0 40px deeppink, 0 0 60px hotpink;
+        z-index: 3;
+        margin-bottom: 10px;
+        text-align: center;
+    }
 
-/* ✨ BIG 2026 */
-.year {
-    font-size: 6.5rem;
-    font-weight: 900;
-    letter-spacing: 8px;
-    text-shadow:
-        0 0 20px hotpink,
-        0 0 40px deeppink,
-        0 0 60px hotpink;
-    z-index: 3;
-    margin-bottom: 10px;
-}
+    /* 💖 Layout */
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        z-index: 3;
+        flex-wrap: wrap; /* important for mobile wrapping */
+    }
 
-/* 💖 Layout */
-.container {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    z-index: 3;
-}
+    /* 📸 Slideshow */
+    .photo {
+        width: 160px;
+        height: 220px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 0 25px hotpink;
+        flex-shrink: 0;
+    }
+    .photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 
-/* 📸 Slideshow */
-.photo {
-    width: 160px;
-    height: 220px;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 0 25px hotpink;
-}
-.photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+    /* 💌 Card */
+    .card {
+        max-width: 320px;
+        background: rgba(255,255,255,0.96);
+        padding: 25px;
+        border-radius: 25px;
+        text-align: center;
+        box-shadow: 0 0 40px hotpink;
+        color: #333;
+        flex-shrink: 0;
+    }
 
-/* 💌 Card */
-.card {
-    max-width: 320px;
-    background: rgba(255,255,255,0.96);
-    padding: 25px;
-    border-radius: 25px;
-    text-align: center;
-    box-shadow: 0 0 40px hotpink;
-    color: #333;
-}
-.card h2 { color: #ff4f9a; }
+    /* 💬 Typewriter */
+    .typewriter {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        min-height: 150px;
+        word-wrap: break-word;
+    }
 
-/* 💬 Typewriter */
-.typewriter {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    min-height: 150px;
-}
+    /* 🎇 Button */
+    button {
+        margin-top: 15px;
+        padding: 12px 25px;
+        border-radius: 25px;
+        border: none;
+        cursor: pointer;
+        background: linear-gradient(135deg, hotpink, deeppink);
+        color: white;
+        font-size: 1rem;
+        box-shadow: 0 0 25px hotpink;
+        transition: transform 0.2s;
+    }
+    button:hover { transform: scale(1.1); }
 
-/* 🎇 Button */
-button {
-    margin-top: 15px;
-    padding: 12px 25px;
-    border-radius: 25px;
-    border: none;
-    cursor: pointer;
-    background: linear-gradient(135deg, hotpink, deeppink);
-    color: white;
-    font-size: 1rem;
-    box-shadow: 0 0 25px hotpink;
-    transition: transform 0.2s;
-}
-button:hover { transform: scale(1.1); }
+    /* 📱 Mobile Responsive */
+    @media (max-width: 768px) {
+        .container { flex-direction: column; gap: 15px; }
+        .year { font-size: 4rem; letter-spacing: 4px; }
+        .photo { width: 140px; height: 190px; }
+        .card { max-width: 90%; padding: 20px; }
+        .typewriter { font-size: 0.9rem; min-height: auto; }
+    }
 
-/* 📱 Mobile */
-@media (max-width: 768px) {
-    .container { flex-direction: column; }
-    .year { font-size: 4rem; }
-    .photo { width: 140px; height: 190px; }
-    .card { max-width: 90%; }
-}
-</style>
+    /* 📱 Extra Small Phones */
+    @media (max-width: 480px) {
+        .year { font-size: 3rem; }
+        .photo { width: 120px; height: 160px; }
+        button { padding: 10px 20px; font-size: 0.9rem; }
+        .card { padding: 15px; border-radius: 20px; }
+    }
+    </style>
     </head>
 
     <body>
@@ -211,20 +213,7 @@ let ti = 0;
 })();
 
 /* 📸 Slideshow */
-const images1 = ["pic (1).jpeg", "pic (2).jpeg", "pic (3).jpeg", "pic (4).jpeg", "pic (5).jpeg", "pic (6).jpeg", "pic (7).jpeg", "pic (8).jpeg"];
-let idx1 = 0;
-const slide1 = document.getElementById("slide1");
-
-setInterval(() => {
-    slide1.style.opacity = 0;
-    setTimeout(() => {
-        idx1 = (idx1 + 1) % images1.length;
-        slide1.src = images1[idx1];
-        slide1.style.opacity = 1;
-    }, 1000);
-}, 4000);
-
-const images2 = [
+const images1 = [
   "pic (1).jpg", "pic (2).jpg", "pic (3).jpg", "pic (4).jpg", "pic (5).jpg",
   "pic (6).jpg", "pic (7).jpg", "pic (8).jpg", "pic (9).jpg", "pic (10).jpg",
   "pic (11).jpg", "pic (12).jpg", "pic (13).jpg", "pic (14).jpg", "pic (15).jpg",
@@ -238,6 +227,19 @@ const images2 = [
   "pic (51).jpg", "pic (52).jpg", "pic (53).jpg", "pic (54).jpg", "pic (55).jpg",
   "pic (56).jpg", "pic (57).jpg", "pic (58).jpg"
 ];
+let idx1 = 0;
+const slide1 = document.getElementById("slide1");
+
+setInterval(() => {
+    slide1.style.opacity = 0;
+    setTimeout(() => {
+        idx1 = (idx1 + 1) % images1.length;
+        slide1.src = images1[idx1];
+        slide1.style.opacity = 1;
+    }, 1000);
+}, 4000);
+
+const images2 = ["pic (1).jpeg", "pic (2).jpeg", "pic (3).jpeg", "pic (4).jpeg", "pic (5).jpeg", "pic (6).jpeg", "pic (7).jpeg", "pic (8).jpeg"];
 let idx2 = 0;
 const slide2 = document.getElementById("slide2");
 
